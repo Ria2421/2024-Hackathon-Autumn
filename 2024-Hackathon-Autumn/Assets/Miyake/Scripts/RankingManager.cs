@@ -1,3 +1,8 @@
+//=================================================
+//ランキング処理
+//参考　https://qiita.com/tilyakuda/items/4999bfcfad97dea3d0e8
+//三宅歩人
+//=================================================
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
