@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float targetTime;
     [SerializeField] GameObject bullet;
-    public float currentTime = 0;
-    float targetTime = 1.0f;
+    float currentTime = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         currentTime += Time.deltaTime;
-        if (targetTime < currentTime)
+        if (Random.Range(targetTime,targetTime + 2.0f) < currentTime)
         {
             Instantiate(bullet, new Vector2(this.transform.position.x , this.transform.position.y), Quaternion.identity);
             currentTime = 0;
