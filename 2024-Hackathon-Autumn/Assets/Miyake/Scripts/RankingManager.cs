@@ -13,7 +13,7 @@ public class RankingManager : MonoBehaviour
 {
     //数値
     [SerializeField, Header("数値")]
-    int point;
+    public int point;
     //テキスト
     [SerializeField, Header("表示させるテキスト")]
     Text[] rankingText = new Text[5];
@@ -26,6 +26,11 @@ public class RankingManager : MonoBehaviour
     //ランキングの数
     int[] rankingValue = new int[5];
 
+    private void Awake()
+    {
+        //スコアを持って来る
+        point = TestManager.score;
+    }
 
     void Start()
     {
@@ -35,6 +40,9 @@ public class RankingManager : MonoBehaviour
         {
             rankingText[i].text = rankingValue[i].ToString();
         }
+
+        //ランキングデータ削除
+        //PlayerPrefs.DeleteAll();
     }
 
     /// <summary>
@@ -52,7 +60,7 @@ public class RankingManager : MonoBehaviour
     /// <summary>
     /// ランキング書き込み
     /// </summary>
-    void SetRanking(int value)
+    public void SetRanking(int value)
     {
         //書き込み用
         for (int i = 0; i < ranking.Length; i++)
@@ -65,6 +73,7 @@ public class RankingManager : MonoBehaviour
                 value = change;
             }
         }
+
         //入れ替えた値を保存
         for (int i = 0; i < ranking.Length; i++)
         {
