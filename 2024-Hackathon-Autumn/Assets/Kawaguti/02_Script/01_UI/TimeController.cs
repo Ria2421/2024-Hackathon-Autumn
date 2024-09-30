@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TimeController : MonoBehaviour
 {
     public Text timeLabel;
-    [SerializeField] float timeCount;
+    float timeCount = 30.0f;
 
     //private float timeCount = 0;
     double _playTimeSec;
@@ -25,9 +25,14 @@ public class TimeController : MonoBehaviour
         if (timeCount <= 0.0f)
         {
             GameObject.Find("Manager").GetComponent<Main>().ClearFlag = true;
+
+            /* フェード処理 (白)  
+                ( "シーン名",フェードの色, 速さ);  */
+            Initiate.DoneFading();
+            Initiate.Fade("Ranking", Color.white, 2.5f);
         }
 
-         timeLabel.text = timeCount.ToString("n2");
+        timeLabel.text = timeCount.ToString("n2");
 
        
 

@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Kawaguti/01_Scene/DemoScene.unity
+    guid: 00f947daaf2bfd847bee53a0bfc0a893
+  - enabled: 1
+    path: Assets/Nisiura/Scenes/Tutorial.unity
+    guid: 2b40a4b9015eb6144947c15fe8ecaa3f
+  - enabled: 1
+    path: Assets/Nisiura/Scenes/Main.unity
+    guid: 292bc91159776e04e9c13e831ba846ce
+  - enabled: 1
+    path: Assets/Miyake/Scenes/Ranking.unity
+    guid: 77df7057485ce5343a39034e082983ae
   m_configObjects: {}
