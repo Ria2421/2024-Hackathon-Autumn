@@ -1,6 +1,7 @@
 //=================================================
 //ランキング処理
-//参考　https://qiita.com/tilyakuda/items/4999bfcfad97dea3d0e8
+//参考1　https://qiita.com/tilyakuda/items/4999bfcfad97dea3d0e8
+//参考2　https://qiita.com/tilyakuda/items/e3ccfbf507acfb16404f
 //三宅歩人
 //=================================================
 using System.Collections;
@@ -16,11 +17,16 @@ public class RankingManager : MonoBehaviour
     //テキスト
     [SerializeField, Header("表示させるテキスト")]
     Text[] rankingText = new Text[5];
+
+    /// <summary>
+    /// 変数
+    /// </summary>
     //ランキングの配列
     string[] ranking = { "No.1", "No.2", "No.3", "No.4", "No.5" };
     //ランキングの数
     int[] rankingValue = new int[5];
-    // Use this for initialization
+
+
     void Start()
     {
         GetRanking();
@@ -30,6 +36,7 @@ public class RankingManager : MonoBehaviour
             rankingText[i].text = rankingValue[i].ToString();
         }
     }
+
     /// <summary>
     /// ランキング呼び出し
     /// </summary>
@@ -41,6 +48,7 @@ public class RankingManager : MonoBehaviour
             rankingValue[i] = PlayerPrefs.GetInt(ranking[i]);
         }
     }
+
     /// <summary>
     /// ランキング書き込み
     /// </summary>
