@@ -22,7 +22,10 @@ public class TimeController : MonoBehaviour
     {
        timeCount -= Time.deltaTime;
 
-        if (timeCount <= 0.0f) return;
+        if (timeCount <= 0.0f)
+        {
+            GameObject.Find("Manager").GetComponent<Main>().ClearFlag = true;
+        }
 
          timeLabel.text = timeCount.ToString("n2");
 
