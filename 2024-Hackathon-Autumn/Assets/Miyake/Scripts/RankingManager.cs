@@ -4,6 +4,7 @@
 //参考2　https://qiita.com/tilyakuda/items/e3ccfbf507acfb16404f
 //三宅歩人
 //=================================================
+using KanKikuchi.AudioManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,11 +30,13 @@ public class RankingManager : MonoBehaviour
     private void Awake()
     {
         //スコアを持って来る
-        point = TestManager.score;
+        point = Shield.score;
     }
 
     void Start()
     {
+        BGMSwitcher.FadeOutAndFadeIn(BGMPath.TITLEMOROMORO);
+
         GetRanking();
         SetRanking(point);
         for (int i = 0; i < rankingText.Length; i++)
@@ -43,6 +46,17 @@ public class RankingManager : MonoBehaviour
 
         //ランキングデータ削除
         //PlayerPrefs.DeleteAll();
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Return))
+        {
+            /* フェード処理 (白)  
+                ( "シーン名",フェードの色, 速さ);  */
+            Initiate.DoneFading();
+            Initiate.Fade("DemoScene", Color.white, 2.5f);
+        }
     }
 
     /// <summary>

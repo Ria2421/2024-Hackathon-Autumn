@@ -14,7 +14,7 @@ public class Main : MonoBehaviour
     public bool ClearFlag { get; set; } = false;
 
     // ‰ñ“]‘¬“x
-    public float Speed = 3.3f;
+    public float Speed;
     public Text score;
 
     // Start is called before the first frame update

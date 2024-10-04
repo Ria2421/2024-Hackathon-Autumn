@@ -1,3 +1,4 @@
+using KanKikuchi.AudioManager;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,12 +6,13 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    public int Score = 0;
+    static public int score;
     private Main manager;
 
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
         manager = GameObject.Find("Manager").GetComponent<Main>();
     }
 
@@ -26,11 +28,11 @@ public class Shield : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        SEManager.Instance.Play(SEPath.BLOCK);
         if (manager.ClearFlag) return;
 
         Destroy(collision.gameObject);
-        Score += 100;
-        Main main = GameObject.FindWithTag("Manager").GetComponent<Main>();
-        main.score.text = Score.ToString();
+        score += 100;
+        manager.score.text = score.ToString();
     }
 }

@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float targetTime;
     [SerializeField] GameObject bullet;
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
+    private Rigidbody2D rb;
     float currentTime = 0;
     GameObject player;
     Vector3 dir;
@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        rb = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class Enemy : MonoBehaviour
             case "enemy":
 
                 Vector2 vec = player.transform.position - this.gameObject.transform.position;
-                rb.velocity = vec.normalized * Random.Range(moveSpeed, moveSpeed + 1.5f);
+                this.rb.velocity = vec.normalized * Random.Range(moveSpeed, moveSpeed + 1.5f);
 
                 // Œü‚«‚½‚¢•ûŒü‚ðŒvŽZ
                 dir = (player.transform.position - this.gameObject.transform.position);

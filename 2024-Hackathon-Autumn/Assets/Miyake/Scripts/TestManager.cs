@@ -11,7 +11,6 @@ public class TestManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rankingManager = new RankingManager();
         //‚±‚±‚É“ü—Í‚µ‚½’l‚ªƒ‰ƒ“ƒLƒ“ƒO‚É”½‰f
         score = 0;
     }

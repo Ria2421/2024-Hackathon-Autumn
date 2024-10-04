@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using KanKikuchi.AudioManager;
 
 public class Bullet : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Bullet : MonoBehaviour
     {
         GameObject player = GameObject.Find("Player");
         Vector2 vec = player.transform.position - this.gameObject.transform.position;
-        rb.velocity = vec.normalized * Random.Range(speed,speed + 1.5f);
+        rb.velocity = vec.normalized * Random.Range(speed,speed + 1.3f);
 
         manager = GameObject.Find("Manager").GetComponent<Main>();
     }
@@ -30,6 +31,8 @@ public class Bullet : MonoBehaviour
     {
         if(manager.ClearFlag) return;
 
+
+
         if (collision.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
@@ -37,19 +40,19 @@ public class Bullet : MonoBehaviour
 
         if(collision.gameObject.name == "Player")
         {
+            SEManager.Instance.Play(SEPath.DAMAGE_SE);
+
             hitEffect(collision.gameObject);
             Destroy(this.gameObject);
 
-            Shield shield = GameObject.FindWithTag("Shield").GetComponent<Shield>(); 
-            shield.Score = (shield.Score - 50);
+            Shield.score = (Shield.score - 50);
 
-            if(shield.Score <= 0)
+            if(Shield.score <= 0)
             {
-                shield.Score = 0;
+                Shield.score = 0;
             }
 
-            Main main = GameObject.FindWithTag("Manager").GetComponent<Main>();
-            main.score.text = shield.Score.ToString();
+            manager.score.text = Shield.score.ToString();
         }
     }
 
